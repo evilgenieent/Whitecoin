@@ -83,21 +83,29 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     resize(1040, 650); //setFixedSize(970, 550);
     setWindowTitle(tr("WhiteCoin") + " " + tr("Wallet"));
     qApp->setStyleSheet(
-                    "QMainWindow { background:rgb(200,200,200);font-family:'Open Sans,sans-serif'; } " \
-                        "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; } " \
-                        "#spacer { background:rgb(255,255,255);border:none; } " \
+                    "QMainWindow { background:white;font-family:'Open Sans,sans-serif'; } " \
+                        "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; border: 0px; border-color: yellow;} " \
+                        "#spacer { background: rgb(14,105,162);border:none; } " \
                         "#toolbar2 { border:none;width:10px; background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
-                        "#toolbar { border:none;height:100%;padding-top:20px; background: rgb(255,255,255); text-align: left; color: black;min-width:200px;max-width:200px;} " \
-                    "QToolBar QToolButton:hover {background-color:qlineargradient(x1: 0, y1: 0, x2: 2, y2: 2,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218),stop: 2 rgb(255,255,255));} " \
-                    "QToolBar QToolButton:pressed {background-color:qlineargradient(x1: 0, y1: 0, x2: 2, y2: 2,stop: 0 rgb(255,255,255), stop: 1 rgb(0,0,0),stop: 2 rgb(255,255,255));} " \
-                    "QToolBar QToolButton:focus { font-family:Century Gothic;padding-left:20px;padding-right:200px;padding-top:10px;padding-bottom:10px; width:100%; color: black; text-align: left; background-color: rgb(200,200,200) } " \
-                    "QToolBar QToolButton { font-family:Century Gothic;padding-left:20px;padding-right:200px;padding-top:10px;padding-bottom:10px; width:100%; color: black; text-align: left; background-color: rgb(255,255,255) } " \
-                        "#labelMiningIcon { padding-left:5px;font-family:Century Gothic;width:100%;font-size:10px;text-align:center;color:grey; } " \
-                    "QMenu { background: rgb(255,255,255); color:grey; padding-bottom:10px; } QMenu::item { color:grey; background-color: transparent; } " \
-                    "QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
-                    "QMenuBar { background: rgb(255,255,255); color:grey; } " \
+                        "#toolbar { height:100%;padding-top:20px; background: white; text-align: left; min-width:200px;max-width:200px; border: none; margin: -2px; padding: -2px;} " \
+                    "QToolBar QToolButton { font-family:Open Sans;padding-left:20px;padding-top:10px;padding-bottom:10px; width:200px; color: white; text-align: left; background-color: rgb(14,105,162) } " \
+                    "QToolBar QToolButton:hover { color: black; background-color: white; border: none; } " \
+                    "QToolBar QToolButton:pressed {color: black; background-color: white; border: none; } " \
+                    "QToolBar QToolButton:checked { color: black; background-color: white; border: none; } " \
+                        "#labelMiningIcon { padding-left:5px;font-family:Open Sans;width:100%;font-size:10px;text-align:center;color:grey; } " \
+                    "QMenu { background: rgb(255,255,255); color:black; padding-bottom:10px; } QMenu::item { color:grey; background-color: transparent; } " \
+                    "QMenu::item:selected { color: white; background-color: rgb(14,105,162); } " \
+                    "QMenuBar { background: rgb(255,255,255); color:black; } " \
                     "QMenuBar::item { font-size:12px;padding-bottom:12px;padding-top:12px;padding-left:15px;padding-right:15px;color:grey; background-color: transparent; } " \
-                    "QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); }");
+                    "QMenuBar::item:selected { color: white; background-color:rgb(14,105,162); }"
+                    "QIcon {}" \
+                    "QTabWidget {background-color:rbg(14,105,162); }" \
+                    "#debug QLabel {color: white; }" \
+                    "QLineEdit {}" \
+                    "QPushButton {}" \
+                    "QStackedWidget {}" \
+                    "QDateTime {}"
+    );
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -150,7 +158,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     //centralWidget = new QStackedWidget(centralWidgetWrapper);
     centralWidget = new QStackedWidget(this);
 
-    centralWidget->setStyleSheet("QStackedWidget{border:1px solid #000;}");
+    centralWidget->setStyleSheet("QStackedWidget{border:0px solid #000;}");
 
     centralWidget->addWidget(overviewPage);
     centralWidget->addWidget(statisticsPage);
@@ -191,7 +199,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
 
-    if (GetBoolArg("-staking", true))
+    if (!GetBoolArg("-posmint", false))
     {
         QTimer *timerStakingIcon = new QTimer(labelStakingIcon);
         connect(timerStakingIcon, SIGNAL(timeout()), this, SLOT(updateStakingIcon()));
@@ -219,13 +227,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                                "background-color: rgba(0,255,0,100);"
                                "}");
     frameBlocks->setObjectName("frame");
-	addToolBarBreak(Qt::LeftToolBarArea);
-    QToolBar *toolbar2 = addToolBar(tr("Separator Toolbar"));
-    addToolBar(Qt::LeftToolBarArea,toolbar2);
-    toolbar2->setOrientation(Qt::Vertical);
-    toolbar2->setMovable( false );
-    toolbar2->setObjectName("toolbar2");
-    toolbar2->setFixedWidth(25);
+//	addToolBarBreak(Qt::LeftToolBarArea);
+//    QToolBar *toolbar2 = addToolBar(tr("Separator Toolbar"));
+//    addToolBar(Qt::LeftToolBarArea,toolbar2);
+//    toolbar2->setOrientation(Qt::Vertical);
+//    toolbar2->setMovable( false );
+//    toolbar2->setObjectName("toolbar2");
+//    toolbar2->setFixedWidth(25);
 //    toolbar2->addWidget(frameBlocks);
 //    toolbar2->addWidget(progressBarLabel);
 //    toolbar2->addWidget(progressBar);
