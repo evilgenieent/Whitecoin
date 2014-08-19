@@ -627,7 +627,7 @@ void BitcoinGUI::optionsClicked()
 
 void BitcoinGUI::aboutCardClicked()
 {
-    QDesktopServices::openUrl(QUrl("http://www.whitecoinfoundation.org/"));
+    QDesktopServices::openUrl(QUrl("http://www.whitecoin.info/"));
 }
 
 void BitcoinGUI::aboutClicked()
