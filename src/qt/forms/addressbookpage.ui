@@ -67,7 +67,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="newAddressButton">
+      <widget class="QToolButton" name="newAddressButton">
        <property name="toolTip">
         <string>Create a new address</string>
        </property>
@@ -76,12 +76,15 @@
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
+         <normaloff>:/icons/add_white</normaloff>:/icons/add_white</iconset>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="copyToClipboard">
+      <widget class="QToolButton" name="copyToClipboard">
        <property name="toolTip">
         <string>Copy the currently selected address to the system clipboard</string>
        </property>
@@ -92,10 +95,13 @@
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/editcopy</normaloff>:/icons/editcopy</iconset>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="showQRCode">
+      <widget class="QToolButton" name="showQRCode">
        <property name="text">
         <string>Show &amp;QR Code</string>
        </property>
@@ -103,10 +109,13 @@
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/qrcode</normaloff>:/icons/qrcode</iconset>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="signMessage">
+      <widget class="QToolButton" name="signMessage">
        <property name="toolTip">
         <string>Sign a message to prove you own a Whitecoin address</string>
        </property>
@@ -117,10 +126,13 @@
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="verifyMessage">
+      <widget class="QToolButton" name="verifyMessage">
        <property name="toolTip">
         <string>Verify a message to ensure it was signed with a specified Whitecoin address</string>
        </property>
@@ -129,12 +141,15 @@
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
+         <normaloff>:/icons/questionmark</normaloff>:/icons/questionmark</iconset>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="deleteButton">
+      <widget class="QToolButton" name="deleteButton">
        <property name="toolTip">
         <string>Delete the currently selected address from the list</string>
        </property>
@@ -144,6 +159,9 @@
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>

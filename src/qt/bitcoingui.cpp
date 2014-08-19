@@ -83,25 +83,29 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     resize(1040, 650); //setFixedSize(970, 550);
     setWindowTitle(tr("WhiteCoin") + " " + tr("Wallet"));
     qApp->setStyleSheet(
-                    "QMainWindow { background:white;font-family:'Open Sans,sans-serif'; } " \
-                        "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; border: 0px; border-color: yellow;} " \
-                        "#spacer { background: rgb(14,105,162);border:none; } " \
-                        "#toolbar2 { border:none;width:10px; background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
-                        "#toolbar { height:100%;padding-top:20px; background: white; text-align: left; min-width:200px;max-width:200px; border: none; margin: -2px; padding: -2px;} " \
-                    "QToolBar QToolButton { font-family:Open Sans;padding-left:20px;padding-top:10px;padding-bottom:10px; width:200px; color: white; text-align: left; background-color: rgb(14,105,162) } " \
+                    "QMainWindow { background:white url(:/images/wallet_logo_background) no-repeat right bottom; background-origin: border; font-family:'Open Sans,sans-serif'; } " \
+                "QLineEdit { border: 4px solid rgb(14,105,162); } " \
+                    "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; border: 0px; border-color: yellow;} " \
+                    "#spacer { background: rgb(14,105,162);border:none; } " \
+                    "#toolbar2 { border:none;width:10px; background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
+                    "#toolbar { height:100%;padding-top:20px; background: white; text-align: left; min-width:200px;max-width:200px; border: none; margin: -2px; padding: -2px;} " \
+                    "QToolBar QToolButton { font-family:Open Sans;padding-left:0px;padding-top:10px;padding-bottom:10px; width:200px; color: white; text-align: left; background-color: rgb(14,105,162) } " \
                     "QToolBar QToolButton:hover { color: black; background-color: white; border: none; } " \
                     "QToolBar QToolButton:pressed {color: black; background-color: white; border: none; } " \
                     "QToolBar QToolButton:checked { color: black; background-color: white; border: none; } " \
-                        "#labelMiningIcon { padding-left:5px;font-family:Open Sans;width:100%;font-size:10px;text-align:center;color:grey; } " \
+                    "QToolButton { color: white;  background-color: rgb(14,105,162); } " \
+                    "#labelMiningIcon { padding-left:5px;font-family:Open Sans;width:100%;font-size:10px;text-align:center;color:grey; } " \
                     "QMenu { background: rgb(255,255,255); color:black; padding-bottom:10px; } QMenu::item { color:grey; background-color: transparent; } " \
                     "QMenu::item:selected { color: white; background-color: rgb(14,105,162); } " \
                     "QMenuBar { background: rgb(255,255,255); color:black; } " \
                     "QMenuBar::item { font-size:12px;padding-bottom:12px;padding-top:12px;padding-left:15px;padding-right:15px;color:grey; background-color: transparent; } " \
-                    "QMenuBar::item:selected { color: white; background-color:rgb(14,105,162); }"
+                    "QMenuBar::item:selected { color: white; background-color:rgb(14,105,162); }" \
+                    "QRadionButton::indicator { background-color: rgb(14,105,162); } " \
                     "QIcon {}" \
-                    "QTabWidget {background-color:rbg(14,105,162); }" \
+                    "QTabWidget { background-color: rbg(14,105,162); }" \
                     "#debug QLabel {color: white; }" \
-                    "QLineEdit {}" \
+                    "QLineEdit { border: 1px solid rbg(14,105,162); border-radius: 4px; }" \
+                    "#scrollArea { border-color: transparent; } " \
                     "QPushButton {}" \
                     "QStackedWidget {}" \
                     "QDateTime {}"
@@ -215,28 +219,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar->setVisible(false);
     progressBar->setOrientation(Qt::Horizontal);
     progressBar->setObjectName("progress");
-    progressBar->setStyleSheet("QProgressBar{"
-                               "border: 1px solid transparent;"
-							   "font-size:9px;"
-                               "text-align: center;"
-                               "color:rgba(0,0,0,100);"
-                               "border-radius: 5px;"
-                               "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(182, 182, 182, 100), stop:1 rgba(209, 209, 209, 100));"
-                                   "}"
-                               "QProgressBar::chunk{"
-                               "background-color: rgba(0,255,0,100);"
-                               "}");
+    progressBar->setStyleSheet("QProgressBar { border: 0px; font-size:9px; text-align: center; color:rgba(0,0,0,100); border-radius: 5px; background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(182, 182, 182, 100), stop:1 rgba(209, 209, 209, 100)); }" \
+                               "QProgressBar::chunk{ background-color: rgb(14,105,162); }");
     frameBlocks->setObjectName("frame");
-//	addToolBarBreak(Qt::LeftToolBarArea);
-//    QToolBar *toolbar2 = addToolBar(tr("Separator Toolbar"));
-//    addToolBar(Qt::LeftToolBarArea,toolbar2);
-//    toolbar2->setOrientation(Qt::Vertical);
-//    toolbar2->setMovable( false );
-//    toolbar2->setObjectName("toolbar2");
-//    toolbar2->setFixedWidth(25);
-//    toolbar2->addWidget(frameBlocks);
-//    toolbar2->addWidget(progressBarLabel);
-//    toolbar2->addWidget(progressBar);
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
@@ -244,7 +229,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QString curStyle = qApp->style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: none; border-radius: 7px; padding: 1px; text-align: center; } " \
+                                   "QProgressBar::chunk { background: rgb(14,105,162); border-radius: 7px; margin: 0px; }"
+                                  );
     }
 
     statusBar()->addWidget(progressBarLabel);
@@ -286,52 +273,85 @@ void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
+    QIcon overviewIcon;
+    overviewIcon.addFile(":/icons/overview", QSize(), QIcon::Normal, QIcon::Off);
+    overviewIcon.addFile(":/icons/overview_black", QSize(), QIcon::Active, QIcon::Off);
+    overviewIcon.addFile(":/icons/overview_black", QSize(), QIcon::Normal, QIcon::On);
+    overviewAction = new QAction(overviewIcon, tr("&My Wallet"), this);
     overviewAction->setToolTip(tr("Show general overview of wallet"));
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    statisticsAction = new QAction(QIcon(":/icons/statistics"), tr("&Statistics"), this);
+    QIcon statisticsIcon;
+    statisticsIcon.addFile(":/icons/statistics", QSize(), QIcon::Normal, QIcon::Off);
+    statisticsIcon.addFile(":/icons/statistics_black", QSize(), QIcon::Active, QIcon::Off);
+    statisticsIcon.addFile(":/icons/statistics_black", QSize(), QIcon::Normal, QIcon::On);
+    statisticsAction = new QAction(statisticsIcon, tr("&Statistics"), this);
     statisticsAction->setToolTip(tr("View statistics"));
     statisticsAction->setCheckable(true);
     tabGroup->addAction(statisticsAction);
 
-    sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
+    QIcon sendCoinsIcon;
+    sendCoinsIcon.addFile(":/icons/send", QSize(), QIcon::Normal, QIcon::Off);
+    sendCoinsIcon.addFile(":/icons/send_black", QSize(), QIcon::Active, QIcon::Off);
+    sendCoinsIcon.addFile(":/icons/send_black", QSize(), QIcon::Normal, QIcon::On);
+    sendCoinsAction = new QAction(sendCoinsIcon, tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a WhiteCoin address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive coins"), this);
+    QIcon receiveCoinsIcon;
+    receiveCoinsIcon.addFile(":/icons/receiving_addresses", QSize(), QIcon::Normal, QIcon::Off);
+    receiveCoinsIcon.addFile(":/icons/receiving_addresses_black", QSize(), QIcon::Active, QIcon::Off);
+    receiveCoinsIcon.addFile(":/icons/receiving_addresses_black", QSize(), QIcon::Normal, QIcon::On);
+    receiveCoinsAction = new QAction(receiveCoinsIcon, tr("&Receive coins"), this);
     receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(receiveCoinsAction);
 
-    historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
+    QIcon historyIcon;
+    historyIcon.addFile(":/icons/history", QSize(), QIcon::Normal, QIcon::Off);
+    historyIcon.addFile(":/icons/history_black", QSize(), QIcon::Active, QIcon::Off);
+    historyIcon.addFile(":/icons/history_black", QSize(), QIcon::Normal, QIcon::On);
+    historyAction = new QAction(historyIcon, tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
-    addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Address Book"), this);
+    QIcon addressBookIcon;
+    addressBookIcon.addFile(":/icons/address-book", QSize(), QIcon::Normal, QIcon::Off);
+    addressBookIcon.addFile(":/icons/address-book_black", QSize(), QIcon::Active, QIcon::Off);
+    addressBookIcon.addFile(":/icons/address-book_black", QSize(), QIcon::Normal, QIcon::On);
+    addressBookAction = new QAction(addressBookIcon, tr("&Address Book"), this);
     addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
 
-    blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
+    QIcon blockIcon;
+    blockIcon.addFile(":/icons/block", QSize(), QIcon::Normal, QIcon::Off);
+    blockIcon.addFile(":/icons/block_black", QSize(), QIcon::Active, QIcon::Off);
+    blockIcon.addFile(":/icons/block_black", QSize(), QIcon::Normal, QIcon::On);
+    blockAction = new QAction(blockIcon, tr("&Block Explorer"), this);
     blockAction->setToolTip(tr("Explore the BlockChain"));
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     blockAction->setCheckable(true);
     tabGroup->addAction(blockAction);
 	
-    poolAction = new QAction(QIcon(":/icons/ex"), tr("&Donate"), this);
+    QIcon poolIcon;
+    poolIcon.addFile(":/icons/ex", QSize(), QIcon::Normal, QIcon::Off);
+    poolIcon.addFile(":/icons/ex_black", QSize(), QIcon::Active, QIcon::Off);
+    poolIcon.addFile(":/icons/ex_black", QSize(), QIcon::Normal, QIcon::On);
+    poolAction = new QAction(poolIcon, tr("&Donate"), this);
     poolAction->setToolTip(tr("Donate"));
     poolAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     poolAction->setCheckable(true);
     tabGroup->addAction(poolAction);
+
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
 	connect(poolAction, SIGNAL(triggered()), this, SLOT(gotoPoolBrowser()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -369,17 +389,30 @@ void BitcoinGUI::createActions()
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
-    unlockWalletAction = new QAction(QIcon(":/icons/mint_open"), tr("&Unlock Wallet..."), this);
+
+    QIcon unlockWalletIcon;
+    unlockWalletIcon.addFile(":/icons/mint_open", QSize(), QIcon::Normal, QIcon::Off);
+    unlockWalletIcon.addFile(":/icons/mint_open_black", QSize(), QIcon::Active, QIcon::Off);
+    unlockWalletIcon.addFile(":/icons/mint_open_black", QSize(), QIcon::Normal, QIcon::On);
+    unlockWalletAction = new QAction(unlockWalletIcon, tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
-    lockWalletAction = new QAction(QIcon(":/icons/mint_closed"), tr("&Lock Wallet"), this);
+
+    QIcon lockWalletIcon;
+    lockWalletIcon.addFile(":/icons/mint_closed", QSize(), QIcon::Normal, QIcon::Off);
+    lockWalletIcon.addFile(":/icons/mint_closed_black", QSize(), QIcon::Active, QIcon::Off);
+    lockWalletIcon.addFile(":/icons/mint_closed_black", QSize(), QIcon::Normal, QIcon::On);
+    lockWalletAction = new QAction(lockWalletIcon, tr("&Lock Wallet"), this);
     lockWalletAction->setToolTip(tr("Lock wallet"));
+
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
+    verifyMessageAction = new QAction(QIcon(":/icons/questionmark"), tr("&Verify message..."), this);
 
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
+
+    torAction = new QAction(QIcon(":icons/addressbook"), tr("Tor Support"), this);
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutCardAction, SIGNAL(triggered()), this, SLOT(aboutCardClicked()));
@@ -394,6 +427,7 @@ void BitcoinGUI::createActions()
     connect(lockWalletAction, SIGNAL(triggered()), this, SLOT(lockWallet()));
     connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
+    connect(torAction, SIGNAL(triggered()), this, SLOT(viewTorSupport()));
 }
 
 void BitcoinGUI::createMenuBar()
@@ -429,6 +463,8 @@ void BitcoinGUI::createMenuBar()
 #endif
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
+    help->addSeparator();
+    help->addAction(torAction);
 }
 
 void BitcoinGUI::createToolBars()
@@ -1111,4 +1147,9 @@ void BitcoinGUI::updateStakingIcon()
         else
             labelStakingIcon->setToolTip(tr("Not staking"));
     }
+}
+
+void BitcoinGUI::viewTorSupport()
+{
+    QDesktopServices::openUrl(QUrl("http://www.whitecoin.info/privacy"));
 }

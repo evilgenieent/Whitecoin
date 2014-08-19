@@ -103,6 +103,7 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+    QAction *torAction;
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -198,6 +199,7 @@ private slots:
     void toggleHidden();
 
     void updateStakingIcon();
+    void viewTorSupport();
 };
 
 #endif

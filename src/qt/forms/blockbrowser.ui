@@ -378,7 +378,7 @@
        <item row="1" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QPushButton" name="blockButton">
+          <widget class="QToolButton" name="blockButton">
            <property name="text">
             <string>Jump to Block</string>
            </property>
@@ -402,7 +402,7 @@
        <item row="12" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QPushButton" name="txButton">
+          <widget class="QToolButton" name="txButton">
            <property name="text">
             <string>Decode Transaction</string>
            </property>
