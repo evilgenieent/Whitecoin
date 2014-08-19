@@ -219,7 +219,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar->setVisible(false);
     progressBar->setOrientation(Qt::Horizontal);
     progressBar->setObjectName("progress");
-    progressBar->setStyleSheet("QProgressBar { border: 0px; font-size:9px; text-align: center; color:rgba(0,0,0,100); border-radius: 5px; background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(182, 182, 182, 100), stop:1 rgba(209, 209, 209, 100)); }" \
+    progressBar->setStyleSheet("QProgressBar { border: 0px; font-size:9px; text-align: center; color: white); border-radius: 5px; background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(182, 182, 182, 100), stop:1 rgba(209, 209, 209, 100)); }" \
                                "QProgressBar::chunk{ background-color: rgb(14,105,162); }");
     frameBlocks->setObjectName("frame");
 
