@@ -5,9 +5,9 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.0.3.0
+!define VERSION 1.1.0.0
 !define COMPANY "Whitecoin Foundation"
-!define URL http://www.whitecoinfoundation.org
+!define URL http://www.whitecoin.info
 
 # MUI Symbol Definitions
 !define MUI_ICON "../share/pixmaps/Whitecoin.ico"
