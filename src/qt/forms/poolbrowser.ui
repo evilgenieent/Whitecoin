@@ -40,7 +40,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; text-decoration: underline;&quot;&gt;Donate to the Foundation to help pay our amazing team of developers:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;WC: WdPskLzGkjXkSns3BgkRF5fW5SveTBS7tR&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;BTC: 1JN9kVvm1zxgYh3Ki1JNsPFPhcE5FfoyeR&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;DOGE: D9n7o15LGaJy54gsQtqfgP8MwRCxC7FeCn&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;LTC: LU7P6BgqPDo1eHzqm2GmPw34HMJVoEe5DV&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; text-decoration: underline;&quot;&gt;Donate to the Foundation to help pay our amazing team of developers:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;XWC: WdPskLzGkjXkSns3BgkRF5fW5SveTBS7tR&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;BTC: 1JN9kVvm1zxgYh3Ki1JNsPFPhcE5FfoyeR&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;DOGE: D9n7o15LGaJy54gsQtqfgP8MwRCxC7FeCn&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;LTC: LU7P6BgqPDo1eHzqm2GmPw34HMJVoEe5DV&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
