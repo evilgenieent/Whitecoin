@@ -1,9 +1,3 @@
-
-Copyright (c) 2013-2014 Whitecoin Developers
-
-
-Whitecoin 0.3.0 BETA
-
 Copyright (c) 2013-2014 Whitecoin Developers
 Copyright (c) 2013 NovaCoin Developers
 Copyright (c) 2011-2012 Bitcoin Developers
@@ -23,12 +17,9 @@ help further advance the field of crypto-currency.
 
 Setup
 -----
-After completing windows setup then run windows command line (cmd)
-  cd daemon
-  whitecoind
-You would need to create a configuration file whitecoin.conf in the default
-wallet directory. Grant access to whitecoind.exe in anti-virus and firewall
-applications if necessary.
+Unpack the files into a directory and run:
+ bin/32/whitecoind (headless, 32-bit)
+ bin/64/whitecoind (headless, 64-bit)
 
 The software automatically finds other nodes to connect to.  You can
 enable Universal Plug and Play (UPnP) with your router/firewall
@@ -37,6 +28,7 @@ or forward port
 15814 (TCP) to your computer so you can receive
 incoming connections.  Whitecoin works without incoming connections,
 but allowing incoming connections helps the Whitecoin network.
+
 
 Upgrade
 -------
@@ -49,6 +41,6 @@ Start up the new whitecoind.
 
 
 See the documentation/wiki at the Whitecoin site:
-  http://whitecoin.cc/
+  http://www.whitecoin.info/
 for help and more information.
 
