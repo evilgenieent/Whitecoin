@@ -80,11 +80,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0)
 {
+    setMinimumSize(1000,550);
     resize(1040, 650); //setFixedSize(970, 550);
     setWindowTitle(tr("WhiteCoin") + " " + tr("Wallet"));
     qApp->setStyleSheet(
                     "QMainWindow { background:white url(:/images/wallet_logo_background) no-repeat right bottom; background-origin: border; font-family:'Open Sans,sans-serif'; } " \
-                "QLineEdit { border: 4px solid rgb(14,105,162); } " \
+                    "QLineEdit { border: 4px solid rgb(14,105,162); } " \
                     "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; border: 0px; border-color: yellow;} " \
                     "#spacer { background: rgb(14,105,162);border:none; } " \
                     "#toolbar2 { border:none;width:10px; background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
