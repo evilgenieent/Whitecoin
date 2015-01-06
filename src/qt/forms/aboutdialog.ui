@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>809</width>
-    <height>418</height>
+    <width>820</width>
+    <height>368</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>820</width>
+    <height>368</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>820</width>
+    <height>368</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>About Whitecoin</string>
@@ -22,11 +40,23 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>350</width>
+       <height>350</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>400</width>
-       <height>400</height>
+       <width>350</width>
+       <height>350</height>
       </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::RichText</enum>
      </property>
      <property name="pixmap">
       <pixmap resource="../bitcoin.qrc">:/images/splash</pixmap>
@@ -106,7 +136,7 @@
         <string>
 Copyright © 2009-2012 Bitcoin Developers
 Copyright © 2012 PPCoin Developers
-Copyright © 2014 Whitecoin Developers
+Copyright © 2014-2015 Whitecoin Developers
 </string>
        </property>
        <property name="textInteractionFlags">
