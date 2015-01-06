@@ -136,8 +136,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     overviewPage = new OverviewPage();
     statisticsPage = new StatisticsPage(this);
 
-	blockBrowser = new BlockBrowser(this);
-	poolBrowser = new PoolBrowser(this);
+    blockBrowser = new BlockBrowser(this);
+    poolBrowser = new PoolBrowser(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -167,7 +167,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(overviewPage);
     centralWidget->addWidget(statisticsPage);
     centralWidget->addWidget(blockBrowser);
-	centralWidget->addWidget(poolBrowser);
+    centralWidget->addWidget(poolBrowser);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -341,7 +341,7 @@ void BitcoinGUI::createActions()
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     blockAction->setCheckable(true);
     tabGroup->addAction(blockAction);
-	
+
     QIcon poolIcon;
     poolIcon.addFile(":/icons/ex", QSize(), QIcon::Normal, QIcon::Off);
     poolIcon.addFile(":/icons/ex_black", QSize(), QIcon::Active, QIcon::Off);
@@ -353,10 +353,10 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(poolAction);
 
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
-	connect(poolAction, SIGNAL(triggered()), this, SLOT(gotoPoolBrowser()));
+    connect(poolAction, SIGNAL(triggered()), this, SLOT(gotoPoolBrowser()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
-	connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
+    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -459,7 +459,7 @@ void BitcoinGUI::createMenuBar()
     help->addAction(openRPCConsoleAction);
     help->addSeparator();
 #ifdef WIN32
-    help->addAction(aboutCardAction);
+    //help->addAction(aboutCardAction);
 #endif
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
@@ -481,11 +481,11 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
-	toolbar->addAction(statisticsAction);
-	toolbar->addAction(blockAction);
-	toolbar->addAction(poolAction);
-	toolbar->addAction(unlockWalletAction);
-	toolbar->addAction(lockWalletAction);
+    toolbar->addAction(statisticsAction);
+    toolbar->addAction(blockAction);
+    toolbar->addAction(poolAction);
+    toolbar->addAction(unlockWalletAction);
+    toolbar->addAction(lockWalletAction);
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     toolbar->addWidget(spacer);
