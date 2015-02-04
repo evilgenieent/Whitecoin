@@ -84,31 +84,30 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     resize(1040, 650); //setFixedSize(970, 550);
     setWindowTitle(tr("WhiteCoin") + " " + tr("Wallet"));
     qApp->setStyleSheet(
-                    "QMainWindow { background:white url(:/images/wallet_logo_background) no-repeat right bottom; background-origin: border; font-family:'Open Sans,sans-serif'; } " \
-                    "QLineEdit { border: 4px solid rgb(14,105,162); } " \
-                    "#frame { } QToolBar QLabel { padding-top:15px;padding-bottom:10px;margin:0px; border: 0px; border-color: yellow;} " \
-                    "#spacer { background: rgb(14,105,162);border:none; } " \
-                    "#toolbar2 { border:none;width:10px; background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255,255,255), stop: 1 rgb(218,218,218)); } " \
-                    "#toolbar { height:100%;padding-top:20px; background: white; text-align: left; min-width:200px;max-width:200px; border: none; margin: -2px; padding: -2px;} " \
-                    "QToolBar QToolButton { font-family:Open Sans;padding-left:0px;padding-top:10px;padding-bottom:10px; width:200px; color: white; text-align: left; background-color: rgb(14,105,162) } " \
-                    "QToolBar QToolButton:hover { color: black; background-color: white; border: none; } " \
-                    "QToolBar QToolButton:pressed {color: black; background-color: white; border: none; } " \
-                    "QToolBar QToolButton:checked { color: black; background-color: white; border: none; } " \
-                    "QToolButton { color: white;  background-color: rgb(14,105,162); } " \
-                    "#labelMiningIcon { padding-left:5px;font-family:Open Sans;width:100%;font-size:10px;text-align:center;color:grey; } " \
-                    "QMenu { background: rgb(255,255,255); color:black; padding-bottom:10px; } QMenu::item { color:grey; background-color: transparent; } " \
-                    "QMenu::item:selected { color: white; background-color: rgb(14,105,162); } " \
-                    "QMenuBar { background: rgb(255,255,255); color:black; } " \
-                    "QMenuBar::item { font-size:12px;padding-bottom:12px;padding-top:12px;padding-left:15px;padding-right:15px;color:grey; background-color: transparent; } " \
-                    "QMenuBar::item:selected { color: white; background-color:rgb(14,105,162); }" \
-                    "QRadionButton::indicator { background-color: rgb(14,105,162); } " \
-                    "QIcon {}" \
-                    "QTabWidget { background-color: rbg(14,105,162); }" \
-                    "#debug QLabel {color: white; }" \
-                    "QLineEdit { border: 1px solid rbg(14,105,162); border-radius: 4px; }" \
-                    "#scrollArea { border-color: transparent; } " \
-                    "QPushButton {}" \
-                    "QStackedWidget {}" \
+                    "QMainWindow { background:white url(:/images/wallet_logo_background) no-repeat right bottom; background-origin: border; font-family:'Open Sans,sans-serif'; } "
+                    "QLineEdit { border: 4px solid rgb(14,105,162); } "
+                    "#frame { } QToolBar QLabel { padding-top:15px; padding-bottom:10px; margin:0px; border: 0px; border-color: yellow;} "
+                    "#spacer { background: rgb(14,105,162); border:none; } "
+                    "#toolbar { height:100%; padding-top:20px; background: white; text-align: left; min-width:220px; max-width:220px; border: none;} "
+                    "QToolBar QToolButton { font-family:Open Sans; padding-left:0px; padding-top:10px; padding-bottom:10px; width:220px; color: white; text-align: left; background-color: rgb(14,105,162) } "
+                    "QToolBar QToolButton:hover { color: black; background-color: white; border: none; } "
+                    "QToolBar QToolButton:pressed {color: black; background-color: white; border: none; } "
+                    "QToolBar QToolButton:checked { color: black; background-color: white; border: none; } "
+                    "#labelMiningIcon { padding-left:5px; font-family:Open Sans; width:100%;font-size:10px; text-align:center; color:grey; } "
+                    "QMenu { background: rgb(255,255,255); color:black; padding-bottom:10px; } "
+                    "QMenu::item { color:grey; background-color: transparent; } "
+                    "QMenu::item:selected { color: white; background-color: rgb(14,105,162); } "
+                    "QMenuBar { background: rgb(255,255,255); color:black; } "
+                    "QMenuBar::item { font-size:12px; padding-bottom:12px; padding-top:12px; padding-left:15px; padding-right:15px; color:grey; background-color: transparent; border:none;} "
+                    "QMenuBar::item:selected { color: white; background-color:rgb(14,105,162); border:none;}"
+                    "QRadionButton::indicator { background-color: rgb(14,105,162); } "
+                    "QIcon {}"
+                    "QTabWidget { background-color: rbg(14,105,162); }"
+                    "#debug QLabel {color: white; }"
+                    "QLineEdit { border: 1px solid rbg(14,105,162); border-radius: 4px; }"
+                    "#scrollArea { border-color: transparent; } "
+                    "QPushButton {}"
+                    "QStackedWidget {}"
                     "QDateTime {}"
     );
 #ifndef Q_OS_MAC
@@ -376,7 +375,7 @@ void BitcoinGUI::createActions()
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About WhiteCoin"), this);
     aboutAction->setToolTip(tr("Show information about WhiteCoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
-    aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
+    aboutQtAction = new QAction(QIcon(":/icons/qt"), tr("About &Qt"), this);
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
@@ -413,7 +412,7 @@ void BitcoinGUI::createActions()
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
-    torAction = new QAction(QIcon(":icons/addressbook"), tr("Tor Support"), this);
+    torAction = new QAction(QIcon(":/icons/tor"), tr("Tor Support"), this);
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutCardAction, SIGNAL(triggered()), this, SLOT(aboutCardClicked()));
@@ -491,8 +490,6 @@ void BitcoinGUI::createToolBars()
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     toolbar->addWidget(spacer);
     spacer->setObjectName("spacer");
-
-
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)

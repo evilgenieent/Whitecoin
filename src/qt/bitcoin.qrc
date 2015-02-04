@@ -60,6 +60,8 @@
         <file alias="mint_open_black">res/icons/mint_open_black.png</file>
         <file alias="add_white">res/icons/add_white.png</file>
         <file alias="questionmark">res/icons/transaction0_white.png</file>
+        <file alias="qt">res/icons/Qt.png</file>
+        <file alias="tor">res/icons/tor.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
