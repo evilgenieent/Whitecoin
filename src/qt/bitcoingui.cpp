@@ -111,7 +111,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                     "QDateTime {}"
     );
 #ifndef Q_OS_MAC
-    qApp->setWindowIcon(QIcon(":icons/bitcoin"));
+    QApplication::setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
 #else
     setUnifiedTitleAndToolBarOnMac(true);
@@ -219,17 +219,17 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar->setVisible(false);
     progressBar->setOrientation(Qt::Horizontal);
     progressBar->setObjectName("progress");
-    progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center; } "
+    progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center;} "
                                "QProgressBar::chunk { background: #0E69A2; border-radius: 5px; margin: 0px; }");
     frameBlocks->setObjectName("frame");
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
-    QString curStyle = qApp->style()->metaObject()->className();
+    QString curStyle = QApplication::style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center; } "
+        progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center;} "
                                    "QProgressBar::chunk { background: #0E69A2; border-radius: 5px; margin: 0px; }");
     }
 
@@ -265,6 +265,7 @@ BitcoinGUI::~BitcoinGUI()
         trayIcon->hide();
 #ifdef Q_OS_MAC
     delete appMenuBar;
+    MacDockIconHandler::instance()->setMainWindow(NULL);
 #endif
 }
 
@@ -501,7 +502,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         {
             setWindowTitle(windowTitle() + QString(" ") + tr("[testnet]"));
 #ifndef Q_OS_MAC
-            qApp->setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+            QApplication::setWindowIcon(QIcon(":icons/bitcoin_testnet"));
             setWindowIcon(QIcon(":icons/bitcoin_testnet"));
 #else
             MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin_testnet"));
@@ -598,6 +599,8 @@ void BitcoinGUI::createTrayIcon()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif
+
+    notificator = new Notificator(QApplication::applicationName(), trayIcon);
 }
 
 #ifndef Q_OS_MAC
@@ -790,7 +793,7 @@ void BitcoinGUI::closeEvent(QCloseEvent *event)
         if(!clientModel->getOptionsModel()->getMinimizeToTray() &&
            !clientModel->getOptionsModel()->getMinimizeOnClose())
         {
-            qApp->quit();
+            QApplication::quit();
         }
 #endif
     }
