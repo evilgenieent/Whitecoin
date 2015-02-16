@@ -219,8 +219,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar->setVisible(false);
     progressBar->setOrientation(Qt::Horizontal);
     progressBar->setObjectName("progress");
-    progressBar->setStyleSheet("QProgressBar { border: 0px; font-size:9px; text-align: center; color: white); border-radius: 5px; background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(182, 182, 182, 100), stop:1 rgba(209, 209, 209, 100)); }" \
-                               "QProgressBar::chunk{ background-color: rgb(14,105,162); }");
+    progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center; } "
+                               "QProgressBar::chunk { background: #0E69A2; border-radius: 5px; margin: 0px; }");
     frameBlocks->setObjectName("frame");
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
@@ -229,9 +229,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QString curStyle = qApp->style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: none; border-radius: 7px; padding: 1px; text-align: center; } " \
-                                   "QProgressBar::chunk { background: rgb(14,105,162); border-radius: 7px; margin: 0px; }"
-                                  );
+        progressBar->setStyleSheet("QProgressBar { background-color: white; border: 0px solid grey; border-radius: 5px; padding: 1px; text-align: center; } "
+                                   "QProgressBar::chunk { background: #0E69A2; border-radius: 5px; margin: 0px; }");
     }
 
     statusBar()->addWidget(progressBarLabel);
