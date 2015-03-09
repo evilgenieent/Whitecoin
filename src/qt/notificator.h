@@ -2,11 +2,15 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOTIFICATOR_H
-#define NOTIFICATOR_H
+#ifndef BITCOIN_QT_NOTIFICATOR_H
+#define BITCOIN_QT_NOTIFICATOR_H
 
-#include <QObject>
+#if defined(HAVE_CONFIG_H)
+#include "config/bitcoin-config.h"
+#endif
+
 #include <QIcon>
+#include <QObject>
 
 QT_BEGIN_NAMESPACE
 class QSystemTrayIcon;
@@ -25,8 +29,8 @@ public:
     /** Create a new notificator.
        @note Ownership of trayIcon is not transferred to this object.
     */
-    Notificator(const QString &programName=QString(), QSystemTrayIcon *trayIcon=0, QWidget *parent=0);
-        ~Notificator();
+    Notificator(const QString &programName, QSystemTrayIcon *trayIcon, QWidget *parent);
+    ~Notificator();
 
     // Message class
     enum Class
@@ -73,4 +77,4 @@ private:
 #endif
 };
 
-#endif // NOTIFICATOR_H
+#endif // BITCOIN_QT_NOTIFICATOR_H
