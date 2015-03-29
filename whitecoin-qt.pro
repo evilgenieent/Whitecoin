@@ -309,6 +309,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/kernel.cpp \
     src/scrypt-x86.S \
     src/scrypt-x86_64.S \
+    src/scrypt-arm.S \
     src/scrypt_mine.cpp \
     src/pbkdf2.cpp
 
