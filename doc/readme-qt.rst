@@ -4,17 +4,41 @@ Whitecoin-qt: Qt4 GUI for Whitecoin
 Build instructions
 ===================
 
-Debian
+Debian (i386, amd64)
 -------
 
-First, make sure that the required packages for Qt4 development of your
+First, make sure that the required packages for Qt5 development of your
 distribution are installed, for Debian and Ubuntu these are:
 
 ::
 
-    apt-get install qt4-qmake libqt4-dev build-essential libboost-dev libboost-system-dev \
+    apt-get install qt5-qmake libqt5-dev build-essential libboost-dev libboost-system-dev \
         libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
-        libssl-dev libdb4.8++-dev
+        libssl-dev libdb4.8++-dev libminiupnpc-dev libminiupnpc8
+
+then execute the following:
+
+::
+
+    qmake
+    make
+
+Alternatively, install Qt Creator and open the `whitecoin-qt.pro` file.
+
+An executable named `whitecoin-qt` will be built.
+
+
+Debian (armv6l, armv7l)
+-------
+
+First, make sure that the required packages for Qt5 development of your
+distribution are installed, for Debian and Ubuntu (armv6l, armv7l) these are:
+
+::
+
+    apt-get install qt5-qmake libqt5-dev build-essential libboost-dev libboost-system-dev \
+        libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+        libssl-dev libdb5.1++-dev libminiupnpc-dev libminiupnpc8
 
 then execute the following:
 
