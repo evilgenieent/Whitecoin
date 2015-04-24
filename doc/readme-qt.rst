@@ -23,6 +23,13 @@ then execute the following:
     qmake
     make
 
+When MSSE2 is required for older 32 bit, use
+
+::
+
+    qmake USE_SSE2=1
+    make
+
 Alternatively, install Qt Creator and open the `whitecoin-qt.pro` file.
 
 An executable named `whitecoin-qt` will be built.
