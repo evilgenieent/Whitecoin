@@ -146,14 +146,15 @@ else:equals(QMAKE_XCPUARCH, armv6l) {
     QMAKE_CXXFLAGS += -DNOSSE
     QMAKE_CFLAGS += -DNOSSE
 }
-else {
-*-g++-32 {
+
+# use: qmake "USE_SSE2=1 for older 32 bits that require msse2"
+contains(USE_SSE2, 1) {
     message("32 platform, adding -msse2 flag")
 
     QMAKE_CXXFLAGS += -msse2
     QMAKE_CFLAGS += -msse2
 }
-}
+
 #endif
 
 QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
